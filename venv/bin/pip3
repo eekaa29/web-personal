@@ -1,4 +1,4 @@
-#!/home/ekaitz-martin/MIS_ARCHIVOS/PROYECTOS/Web-Personal/venv/bin/python3
+#!/home/ekaitz-martin/MIS_ARCHIVOS/PROYECTOS/Web-Personal/venv/bin/python
 # -*- coding: utf-8 -*-
 import re
 import sys

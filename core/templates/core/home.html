@@ -1,0 +1,109 @@
+{% extends "core/base.html" %}
+{% load static %}
+{% block title %}Home{% endblock %}
+{% block content %}
+    <section>
+        <div class="font-brand flex items-start gap-4 m-4">
+            <img
+                alt=""
+                src="{% static 'core/img/Foto-Ekaitz.jpg' %}"
+                class="size-20 rounded object-cover"
+            />
+
+            <div>
+                <h3 class="font-bold text-gray-900 sm:text-lg">Ekaitz Martin</h3>
+                <h4 class="font-medium text-gray-900 sm:text-lg">Automatizaciones IA & Desarrollador de Software</h4>
+                <p class="mt-0.5 text-gray-700">
+                Desarrollo soluciones de IA para que negocios puedan ahorrar tiempo y dinero combinado con mis conocimientos sobre programación y desarrollo de software.
+                Todo ello documentandolo en mis canales de Youtube. 
+                </p>
+            </div>
+        </div>
+    </section>
+        
+    <section class="mb-6 flex flex-col gap-2">
+        <h1 class="p-4 font-title uppercase text-4xl text-stone-800 bold tracking-[-0.06em] flex justify-center font-bold">Documenting the process</h1>
+
+        {% comment %} VIDEO 1 {% endcomment %}
+
+        <a href="https://www.youtube.com/watch?v=OS9ezo4OyKo&t=2s" class="group relative block bg-black m-3">
+            <img
+                alt=""
+                src="{% static 'core/img/mini-1.png' %}"
+                class="absolute inset-0 h-full w-full object-cover opacity-75 transition-opacity group-hover:opacity-50"
+            />
+
+            <div class="relative p-4 sm:p-6 lg:p-8">
+                <p class="text-sm font-medium tracking-widest text-pink-500 uppercase">Vlog YT</p>
+
+                <p class="text-xl font-bold text-white sm:text-2xl">Ekaitz Martin</p>
+
+                <div class="mt-32 sm:mt-48 lg:mt-64">
+                <div
+                    class="translate-y-8 transform opacity-0 transition-all group-hover:translate-y-0 group-hover:opacity-100"
+                >
+                    <p class="text-sm text-white uppercase">
+                    Unos dias como programador y deportista
+                    </p>
+                </div>
+                </div>
+            </div>
+        </a>
+
+        {% comment %} VIDEO 2 {% endcomment %}
+        <a href="https://www.youtube.com/watch?v=bz4vGMRRQi4&t=2s" class="group relative block bg-black m-3">
+            <img
+                alt=""
+                src="{% static 'core/img/mini-2.png' %}"
+                class="absolute inset-0 h-full w-full object-cover opacity-75 transition-opacity group-hover:opacity-50"
+            />
+
+            <div class="relative p-4 sm:p-6 lg:p-8">
+                <p class="text-sm font-medium tracking-widest text-pink-500 uppercase">Vlog YT</p>
+
+                <p class="text-xl font-bold text-white sm:text-2xl">Ekaitz Martin</p>
+
+                <div class="mt-32 sm:mt-48 lg:mt-64">
+                <div
+                    class="translate-y-8 transform opacity-0 transition-all group-hover:translate-y-0 group-hover:opacity-100"
+                >
+                    <p class="text-sm text-white uppercase">
+                    Unos días en la vida de un estudiante de programación y deportista de 21 años
+                    </p>
+                </div>
+                </div>
+            </div>
+        </a>
+    </section>
+
+    <section>
+        <h2 class="uppercase text-stone-800 font-bold text-2xl font-brand tracking-[-0.06em] flex justify-end p-2"> Automatizaciones IA</h2>
+        {% comment %} VIDEO 1 {% endcomment %}
+        <a href="https://www.youtube.com/watch?v=bz4vGMRRQi4&t=2s" class="group relative block bg-black m-3">
+            <img
+                alt=""
+                src="{% static 'core/img/formulario.png' %}"
+                class="absolute inset-0 h-full w-full object-cover opacity-75 transition-opacity group-hover:opacity-50"
+            />
+
+            <div class="relative p-4 sm:p-6 lg:p-8">
+                <p class="text-sm font-medium tracking-widest text-pink-500 uppercase">IA</p>
+
+                <p class="text-xl font-bold text-white sm:text-2xl">ekaitzmc29</p>
+
+                <div class="mt-32 sm:mt-48 lg:mt-64">
+                <div
+                    class="translate-y-8 transform opacity-0 transition-all group-hover:translate-y-0 group-hover:opacity-100"
+                >
+                    <p class="text-sm text-white uppercase">
+                    Cómo guardar la información de tus clientes usando IA
+                    </p>
+                </div>
+                </div>
+            </div>
+        </a>
+    </section>
+        
+
+
+{% endblock %}

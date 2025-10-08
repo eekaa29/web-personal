@@ -1,0 +1,26 @@
+# ── Python / Django
+__pycache__/
+*.py[cod]
+*.sqlite3
+*.log
+
+# ── Entorno / secretos
+.env
+.env.*
+*.env
+
+# ── Static build
+/staticfiles/
+/media/
+
+# ── Tailwind / Node (django-tailwind v4)
+theme/node_modules/
+theme/package-lock.json
+theme/static_src/.cache/
+theme/static/css/dist/
+*.map
+
+# ── IDE
+.vscode/
+.idea/
+.DS_Store

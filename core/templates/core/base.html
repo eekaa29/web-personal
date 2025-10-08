@@ -1,0 +1,85 @@
+{% load static tailwind_tags %}
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        {% tailwind_css %}
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <title>{% block title %}{% endblock %} | Ekaitz Martin</title>
+
+        <!-- Estilos y fuentes del template  -->
+        {% load static %}
+        
+    </head>
+
+    <body class="bg-brand-bg overflow-x-hidden min-h-screen">
+        <!-- Cabecera -->
+        <header class="bg-brand-bg sticky top-0 z-40">
+            <div class="mx-auto max-w-7xl w-full px-4 sm:px-6 lg:px-8">
+            <div class="flex h-16 w-full items-center justify-between">
+
+                <!-- Logo -->
+                <a href="{% url 'home' %}" class="shrink-0 block">
+                <img src="{% static 'core/img/logo.png' %}" alt="logo" class="h-16 w-auto max-w-[160px] md:h-26">
+                </a>
+
+                <!-- Botón móvil -->
+                <button
+                id="menu-toggle"
+                class="lg:hidden inline-flex items-center justify-center rounded-md p-2 text-slate-900 hover:text-indigo-500 focus:outline-none focus-visible:ring"
+                aria-controls="mobile-menu"
+                aria-expanded="false"
+                >
+                <span class="sr-only">Abrir menú</span>
+                <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M4 6h16M4 12h16M4 18h16"/>
+                </svg>
+                </button>
+
+                <!-- Menú desktop -->
+                <nav aria-label="Global" class="hidden lg:flex w-auto">
+                <ul class="flex items-center gap-5 text-xl font-medium">
+                    <li><a class="text-slate-900 hover:text-indigo-500 transition" href="{% url 'content' %}">Contenido gratuito</a></li>
+                    <li><a class="text-slate-900 hover:text-indigo-500 transition" href="{% url 'projects' %}">Proyectos</a></li>
+                    <li><a class="text-slate-900 hover:text-indigo-500 transition" href="{% url 'community' %}">Comunidad</a></li>
+                    <li><a class="text-slate-900 hover:text-indigo-500 transition" href="{% url 'contact' %}">Trabajemos juntos</a></li>
+                </ul>
+                </nav>
+
+            </div>
+            </div>
+
+            <!-- Menú móvil overlay (no empuja, no crea ancho extra) -->
+            <nav id="mobile-menu"
+                class="lg:hidden hidden absolute inset-x-0 top-16 bg-brand-bg border-t border-slate-200 shadow">
+            <ul class="space-y-1 px-4 sm:px-6 py-3 text-sm">
+                <li><a class="text-slate-900 hover:text-indigo-500 transition" href="{% url 'content' %}">Contenido gratuito</a></li>
+                <li><a class="text-slate-900 hover:text-indigo-500 transition" href="{% url 'projects' %}">Proyectos</a></li>
+                <li><a class="text-slate-900 hover:text-indigo-500 transition" href="{% url 'community' %}">Comunidad</a></li>
+                <li><a class="text-slate-900 hover:text-indigo-500 transition" href="{% url 'contact' %}">Trabajemos juntos</a></li>
+            </ul>
+            </nav>
+        </header>
+        <span class="flex items-center">
+            <span class="h-px flex-1 bg-gray-300"></span>
+
+            <h1 class="px-4 font-title uppercase text-2xl text-stone-800 bold tracking-[-0.06em] flex justify-center font-bold">Be different</h1>
+
+            <span class="h-px flex-1 bg-gray-300"></span>
+        </span>
+        {% block content %}{% endblock %}
+        {% block scripts %}{% endblock %}
+        
+    </body>
+
+  <script>
+    const btn = document.getElementById('menu-toggle');
+    const menu = document.getElementById('mobile-menu');
+    btn.addEventListener('click', () => {
+      const hidden = menu.classList.toggle('hidden');
+      btn.setAttribute('aria-expanded', !hidden);
+    });
+  </script>
+

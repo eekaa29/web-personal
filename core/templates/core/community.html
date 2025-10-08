@@ -1,0 +1,25 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %}Projects{% endblock %}
+{% block content %}
+    <h1 class="p-4 font-title uppercase text-4xl text-stone-800 bold tracking-[-0.06em] flex justify-end font-bold">Discord</h1>
+
+    <article class="group m-4">
+        <a href="https://discord.gg/ThV4aJt9">
+            <img
+                alt=""
+                src="{% static 'core/img/tiburon-blanco_negro.png' %}"
+                class="h-96 w-full rounded-xl object-cover shadow-xl transition group-hover:grayscale-[50%]"
+            />
+
+            <div class="p-4">
+                <h3 class="text-lg font-medium text-gray-900">Únete a la comunidad</h3>
+                
+
+                <p class="mt-2 line-clamp-3 text-sm/relaxed text-gray-500">
+                Este es un servidor para aquellos que no se conforman, que son diferentes. Acompáñame a conseguir mi mejor versión a través de la tecnología, el deporte y los negocios al mismo tiempo que tú también lo haces.
+                </p>
+            </div>
+        </a>
+    </article>
+{% endblock %}
