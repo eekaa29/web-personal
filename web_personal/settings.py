@@ -25,9 +25,23 @@ load_dotenv(BASE_DIR / ".env")  # <-- carga tu .env
 SECRET_KEY = os.getenv("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv("DEBUG", "False") == "True"
 
-ALLOWED_HOSTS = ['.vercel.app']
+# Hosts y CSRF para Vercel (preview y prod)
+ALLOWED_HOSTS = [
+    ".vercel.app",
+    ".now.sh",       # opcional por compat histórica
+    "localhost",     # por si usas dev local
+    "127.0.0.1", 
+    "www.ekaitzmartin.com",
+    "ekaitzmartin.com",
+]
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://*.vercel.app",
+    "www.ekaitzmartin.com",
+    "ekaitzmartin.com",
+]
 
 
 # Application definition
@@ -145,8 +159,6 @@ if not N8N_WEBHOOK_URL:
     raise RuntimeError("Falta N8N_WEBHOOK_URL en .env")
 
 
-#HOST y CSRF
-DEBUG = os.getenv("DEBUG", "False") == "True"
 
 if not DEBUG:
     # detrás de proxy (Render/Koyeb) para detectar HTTPS real
