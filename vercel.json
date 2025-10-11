@@ -2,8 +2,8 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "functions": {
     "api/**/*.py": {
-      "runtime": "python3.12",
-      "maxDuration": 10
+      "maxDuration": 10,
+      "excludeFiles": "{tests/**,__tests__/**,**/*.test.py,**/test_*.py,fixtures/**,__fixtures__/**,static/**,assets/**}"
     }
   },
   "installCommand": "python -m pip install -r requirements.txt",
