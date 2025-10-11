@@ -27,7 +27,7 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['.vercel.app']
 
 
 # Application definition
@@ -147,9 +147,6 @@ if not N8N_WEBHOOK_URL:
 
 #HOST y CSRF
 DEBUG = os.getenv("DEBUG", "False") == "True"
-
-ALLOWED_HOSTS = ["ekaitzmartin.com",]
-CSRF_TRUSTED_ORIGINS = ["https://ekaitzmartin.com",]
 
 if not DEBUG:
     # detrás de proxy (Render/Koyeb) para detectar HTTPS real
