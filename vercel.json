@@ -6,8 +6,8 @@
       "excludeFiles": "{tests/**,__tests__/**,**/*.test.py,**/test_*.py,fixtures/**,__fixtures__/**,static/**,assets/**}"
     }
   },
-  "installCommand": "python -m pip install -r requirements.txt",
-  "buildCommand": "python manage.py tailwind build && python manage.py collectstatic --noinput",
+  "installCommand": "uv pip install -r requirements.txt",
+  "buildCommand": "uv run python manage.py tailwind build && uv run python manage.py collectstatic --noinput",
   "rewrites": [
     { "source": "/(.*)", "destination": "/api/index.py" }
   ]
