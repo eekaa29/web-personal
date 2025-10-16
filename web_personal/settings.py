@@ -92,12 +92,22 @@ WSGI_APPLICATION = 'web_personal.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+# Database
+# Usa sqlite en local; usa 'dummy' en Vercel para evitar import de sqlite3
+if os.getenv("VERCEL", ""):
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.dummy"
+        }
     }
-}
+else:
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.sqlite3",
+            "NAME": BASE_DIR / "db.sqlite3",
+        }
+    }
+
 
 
 # Password validation
