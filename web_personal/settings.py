@@ -39,8 +39,8 @@ ALLOWED_HOSTS = [
 
 CSRF_TRUSTED_ORIGINS = [
     "https://*.vercel.app",
-    "www.ekaitzmartin.com",
-    "ekaitzmartin.com",
+    "https://www.ekaitzmartin.com",
+    "https://ekaitzmartin.com",
 ]
 
 
