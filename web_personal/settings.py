@@ -25,8 +25,12 @@ load_dotenv(BASE_DIR / ".env")  # <-- carga tu .env
 SECRET_KEY = os.getenv("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv("DEBUG", "False") == "True"
+ENV = os.getenv("DJANGO_ENV", "production")  # "production" | "development" | "preview"
 
+if ENV == "production":
+    DEBUG = False
+else:
+    DEBUG = os.getenv("DEBUG", "True")  # en dev/preview, por defecto True
 # Hosts y CSRF para Vercel (preview y prod)
 ALLOWED_HOSTS = [
     ".vercel.app",
