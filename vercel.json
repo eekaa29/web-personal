@@ -7,7 +7,7 @@
     }
   },
   "installCommand": "",
-  "buildCommand": "export UV_LINK_MODE=copy && uv run python manage.py tailwind install && uv run python manage.py tailwind build && uv run python manage.py collectstatic --noinput",
+  "buildCommand": "uv run python manage.py tailwind install && uv run python manage.py tailwind build && uv run python manage.py collectstatic --noinput",
   "rewrites": [
     { "source": "/(.*)", "destination": "/api/index.py" }
   ]
