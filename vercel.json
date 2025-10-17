@@ -6,7 +6,7 @@
       "excludeFiles": "{tests/**,__tests__/**,**/*.test.py,**/test_*.py,fixtures/**,__fixtures__/**,assets/**}"
     }
   },
-  "installCommand": "",
+  "installCommand": "export UV_LINK_MODE=copy && uv pip install --system -r requirements.txt",
   "buildCommand": "uv run python manage.py tailwind install && uv run python manage.py tailwind build && uv run python manage.py collectstatic --noinput",
   "rewrites": [
     { "source": "/(.*)", "destination": "/api/index.py" }
