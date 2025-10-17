@@ -1,13 +1,14 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": "other",
   "functions": {
     "api/**/*.py": {
       "maxDuration": 10,
       "excludeFiles": "{tests/**,__tests__/**,**/*.test.py,**/test_*.py,fixtures/**,__fixtures__/**,assets/**}"
     }
   },
-  "installCommand": "UV_LINK_MODE=copy uv venv --python 3.12 && uv pip install -r requirements.txt",
-  "buildCommand": "uv run python manage.py tailwind install && uv run python manage.py tailwind build && uv run python manage.py collectstatic --noinput",
+  "installCommand": "",
+  "buildCommand": "export UV_LINK_MODE=copy && uv run python manage.py tailwind install && uv run python manage.py tailwind build && uv run python manage.py collectstatic --noinput",
   "rewrites": [
     { "source": "/(.*)", "destination": "/api/index.py" }
   ]
