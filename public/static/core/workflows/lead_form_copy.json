@@ -1,0 +1,197 @@
+{
+  "name": "Lead form copy",
+  "nodes": [
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "14XHqhm2pNh1SzshLbYR79ZebrkKb3OMiztOXGQ10X_k",
+          "mode": "list",
+          "cachedResultName": "LEADS-TABLE",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/14XHqhm2pNh1SzshLbYR79ZebrkKb3OMiztOXGQ10X_k/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Hoja 1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/14XHqhm2pNh1SzshLbYR79ZebrkKb3OMiztOXGQ10X_k/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Nombre": "={{ $json.body.name }}",
+            "Email": "={{ $json.body.email }}",
+            "Teléfono": "={{ $json.body.phone }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Nombre",
+              "displayName": "Nombre",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Teléfono",
+              "displayName": "Teléfono",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        208,
+        0
+      ],
+      "id": "d6d50900-1824-4926-a544-22b4c1048424",
+      "name": "Append row in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "1gBzcSRYthjeJeU0",
+          "name": "Ekaitz-main"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sendTo": "={{ $('Webhook').item.json.body.email }}",
+        "subject": "Formulario enviado correctamente",
+        "emailType": "text",
+        "message": "={{ $('Webhook').item.json.body.name }}!, gracias por rellenar el formulario!\n\nEl formulario se ha enviado correctamente, en breve me pondré en contacto contigo! \n\nHasta pronto!\n\nEKaitz\n\n\n\nENGLISH\n{{ $json.Nombre }}, thanks for filling in the form!\n\nIt was succesfully sent, I personally reach you out asap!\n\nSee you!\n\nEkaitz.",
+        "options": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        400,
+        -144
+      ],
+      "id": "8b5190b6-8824-4dd3-99dc-831e714dae51",
+      "name": "Send a message",
+      "webhookId": "a0581bbd-62a1-48a4-a6e3-0e6ada5b8f34",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "jkwam4FugyFl0B87",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sendTo": "info@example.com",
+        "subject": "UN LEAD A RELLENADO EL FORM DE YT",
+        "emailType": "text",
+        "message": "={{ $('Webhook').item.json.body.name }} ha rellenado el formulario!\n\nCorreo electrónico: {{ $('Webhook').item.json.body.email }}\nNúmero de teléfono: {{ $('Webhook').item.json.body.phone }}",
+        "options": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        400,
+        128
+      ],
+      "id": "904cc875-1f2c-43dc-85df-e2b3e30a5d0a",
+      "name": "Send a message1",
+      "webhookId": "cc5df57d-881f-4830-96be-8f4c6fd7d949",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "ifAX356nPHqWjem5",
+          "name": "ekamartic2003@gmail.com"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "880835cc-8e25-496b-a478-6da3096c2f75",
+        "authentication": "basicAuth",
+        "responseMode": "lastNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        -48,
+        0
+      ],
+      "id": "b8793580-7a3c-4ee3-999c-75933f4b80df",
+      "name": "Webhook",
+      "webhookId": "880835cc-8e25-496b-a478-6da3096c2f75",
+      "credentials": {
+        "httpBasicAuth": {
+          "id": "VCe9DfUNI6wNJhYr",
+          "name": "Unnamed credential"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Append row in sheet": {
+      "main": [
+        [
+          {
+            "node": "Send a message",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Send a message1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Append row in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "versionId": "a5f606d0-a786-4867-a5b1-fe0572b19ade",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "c555240d3bc4d563c5513cf7456183518e21b64d5249888e5a1e1e6a28bb011f"
+  },
+  "id": "ufVNdNrcKq9lY50R",
+  "tags": []
+}

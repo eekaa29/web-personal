@@ -148,7 +148,12 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 STATIC_URL = "/static/"
-STATIC_ROOT = BASE_DIR / "staticfiles"
+
+# En Vercel, los archivos se sirven desde public/
+if os.getenv("VERCEL", ""):
+    STATIC_ROOT = BASE_DIR / "public" / "static"
+else:
+    STATIC_ROOT = BASE_DIR / "staticfiles"
 
 if os.getenv("VERCEL", ""):
     # En Vercel: evita crash por manifest faltante
