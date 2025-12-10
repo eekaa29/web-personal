@@ -175,8 +175,8 @@ if DEBUG:
 
 #N8N
 N8N_WEBHOOK_URL = os.getenv("N8N_WEBHOOK_URL", "")
-if not N8N_WEBHOOK_URL:
-    raise RuntimeError("Falta N8N_WEBHOOK_URL en .env")
+if not N8N_WEBHOOK_URL and not DEBUG:
+    raise RuntimeError("Falta N8N_WEBHOOK_URL en producción")
 
 
 
@@ -189,7 +189,7 @@ if not DEBUG:
     CSRF_COOKIE_SECURE = True
 
     # Empieza con 3600 (1h) en el primer deploy; cuando todo esté OK, súbelo a 31536000 (1 año)
-    SECURE_HSTS_SECONDS = 31536000
+    SECURE_HSTS_SECONDS = 3600
     SECURE_HSTS_INCLUDE_SUBDOMAINS = True
     SECURE_HSTS_PRELOAD = True
 
