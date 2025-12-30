@@ -11,7 +11,9 @@
       "VERCEL": "1"
     }
   },
+  "buildCommand": "bash build.sh",
   "rewrites": [
+    { "source": "/static/(.*)", "destination": "/public/static/$1" },
     { "source": "/(.*)", "destination": "/api/index.py" }
   ]
 }

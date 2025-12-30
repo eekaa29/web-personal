@@ -30,7 +30,17 @@ ENV = os.getenv("DJANGO_ENV", "production")  # "production" | "development" | "p
 if ENV == "production":
     DEBUG = False
 else:
-    DEBUG = os.getenv("DEBUG", "True")  # en dev/preview, por defecto True
+    DEBUG = os.getenv("DEBUG", "True").lower() in ("true", "1", "yes")  # Convertir a boolean
+
+# Validar SECRET_KEY
+if not SECRET_KEY:
+    if ENV == "production":
+        raise ValueError("SECRET_KEY debe estar configurada en las variables de entorno para producción")
+    else:
+        # En desarrollo, usar la clave del .env o una temporal
+        SECRET_KEY = 'dev-secret-key-insecure-do-not-use-in-production'
+        import warnings
+        warnings.warn("Usando SECRET_KEY temporal para desarrollo. NO usar en producción.")
 # Hosts y CSRF para Vercel (preview y prod)
 ALLOWED_HOSTS = [
     ".vercel.app",
@@ -181,7 +191,8 @@ if DEBUG:
 #N8N
 N8N_WEBHOOK_URL = os.getenv("N8N_WEBHOOK_URL", "")
 if not N8N_WEBHOOK_URL and not DEBUG:
-    raise RuntimeError("Falta N8N_WEBHOOK_URL en producción")
+    import warnings
+    warnings.warn("N8N_WEBHOOK_URL no está configurado en producción. Algunas funcionalidades pueden no estar disponibles.")
 
 
 
