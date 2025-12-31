@@ -1,12 +1,35 @@
 #!/bin/bash
 
-# Script de build para Vercel
-echo "Ejecutando collectstatic..."
+# Exit immediately if a command exits with a non-zero status
+set -e
 
-# Asegurarse de que el directorio de archivos estáticos existe
+echo "========================================="
+echo "Vercel Build Script - Starting"
+echo "========================================="
+
+# Display Python version for debugging
+echo "Python version:"
+python --version
+
+# Display Django version for debugging
+echo "Django version:"
+python -c "import django; print(django.get_version())"
+
+# Check if manage.py exists
+if [ ! -f "manage.py" ]; then
+    echo "ERROR: manage.py not found!"
+    exit 1
+fi
+
+# Create static files directory
+echo "Creating static files directory..."
 mkdir -p public/static
+echo "✓ Directory created: public/static"
 
-# Ejecutar collectstatic sin input del usuario
-python manage.py collectstatic --noinput
+# Run collectstatic
+echo "Running collectstatic..."
+python manage.py collectstatic --noinput --clear --verbosity 2
 
-echo "Build completado exitosamente"
+echo "========================================="
+echo "✓ Build completed successfully!"
+echo "========================================="

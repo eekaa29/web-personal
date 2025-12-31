@@ -1,0 +1,38 @@
+# Production requirements for Vercel deployment
+# Only includes packages needed to run the Django app in production
+
+# ============================================
+# CORE DJANGO FRAMEWORK
+# ============================================
+django==5.2.7
+asgiref==3.10.0
+sqlparse==0.5.3
+
+# ============================================
+# ENVIRONMENT CONFIGURATION
+# ============================================
+python-dotenv==1.1.1  # Load .env files
+
+# ============================================
+# STATIC FILES SERVING
+# ============================================
+whitenoise==6.11.0  # Serve static files efficiently
+
+# ============================================
+# HTTP REQUESTS (for N8N webhook)
+# ============================================
+requests==2.32.5          # Main HTTP library
+certifi==2025.10.5        # SSL certificates
+charset-normalizer==3.4.3 # Character encoding detection
+idna==3.10                # Internationalized domain names
+urllib3==2.5.0            # HTTP client
+
+# ============================================
+# IMAGE PROCESSING
+# ============================================
+pillow==11.1.0  # Image handling (if your app uses images)
+
+# ============================================
+# TIMEZONE DATA
+# ============================================
+tzdata==2025.2  # Timezone information
