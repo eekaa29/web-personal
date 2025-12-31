@@ -1,11 +1,5 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "functions": {
-    "api/index.py": {
-      "maxDuration": 30,
-      "excludeFiles": "{tests/**,__tests__/**,**/*.test.py,**/test_*.py,fixtures/**,__fixtures__/**,assets/**,venv/**,staticfiles/**,*.pyc,__pycache__/**}"
-    }
-  },
   "build": {
     "env": {
       "VERCEL": "1"
@@ -14,6 +8,6 @@
   "buildCommand": "bash build.sh",
   "rewrites": [
     { "source": "/static/(.*)", "destination": "/public/static/$1" },
-    { "source": "/(.*)", "destination": "/api/index.py" }
+    { "source": "/(.*)", "destination": "/api/index" }
   ]
 }
