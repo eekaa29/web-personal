@@ -6,11 +6,6 @@
     }
   },
   "buildCommand": "bash build.sh",
-  "functions": {
-    "api/index.py": {
-      "runtime": "python3.12"
-    }
-  },
   "rewrites": [
     { "source": "/static/(.*)", "destination": "/public/static/$1" },
     { "source": "/(.*)", "destination": "/api/index" }
