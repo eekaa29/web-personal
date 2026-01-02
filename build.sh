@@ -11,6 +11,10 @@ echo "========================================="
 echo "Python version:"
 python --version
 
+# Install Python dependencies
+echo "Installing Python dependencies..."
+pip install -r requirements-production.txt
+
 # Display Django version for debugging
 echo "Django version:"
 python -c "import django; print(django.get_version())"
