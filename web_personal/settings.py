@@ -68,9 +68,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'core',
-    'tailwind',
-    'theme',
 ]
+
+# Add tailwind apps only in development
+if DEBUG:
+    INSTALLED_APPS += ['tailwind', 'theme']
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
